@@ -136,6 +136,8 @@ enum class Functional {
   MN15,
   MN15L,
   revM06L,
+
+  B2PLYP,
 };
 
 extern BidirectionalMap<std::string, Functional> functional_map;

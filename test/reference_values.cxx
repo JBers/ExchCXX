@@ -653,6 +653,8 @@ ExchCXX::HybCoeffs load_reference_exx( ExchCXX::Functional func ) {
     case Functional::M11:  exx = {1.0, -0.572, 0.25}; break;
     case Functional::MN12SX:  exx = {0.0, 0.25, 0.11}; break;
     case Functional::MN15:  exx = {0.44, 0, 0.0}; break;
+
+    case Functional::B2PLYP:  exx = {0.53, 0, 0.0}; break;
     default:               exx = {0.0,0.0,0.0};
   }
 

@@ -134,7 +134,9 @@ BidirectionalMap<std::string, Functional> functional_map{{
     {"MN12SX", Functional::MN12SX},
     {"MN15", Functional::MN15},
     {"MN15L", Functional::MN15L},
-    {"REVM06L", Functional::revM06L}}
+    {"REVM06L", Functional::revM06L},
+
+    {"B2PLYP", Functional::B2PLYP}}
   };
 
 std::ostream &operator<<(std::ostream &out, Functional functional) {
@@ -173,6 +175,13 @@ std::pair<std::vector<std::pair<double, XCKernel>>, HybCoeffs> functional_factor
       {0.72, XCKernel( backend, Kernel::B88,           polar )},
       {0.19, XCKernel( backend, Kernel::VWN5,          polar )},
       {0.81, XCKernel( backend, Kernel::LYP,           polar )}
+    };
+  }
+  else if( func == Functional::B2PLYP ){
+    hyb_coefs = {0.53, 0.0, 0.0};
+    kerns = { 
+      {0.47, XCKernel( backend, Kernel::B88,           polar )},
+      {0.73, XCKernel( backend, Kernel::LYP,           polar )}
     };
   }
   else if( func == Functional::PBE )
