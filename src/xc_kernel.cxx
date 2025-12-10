@@ -184,11 +184,10 @@ namespace ExchCXX
       const Kernel kern,
       const Spin polar) : XCKernel(kernel_factory(backend, kern, polar)) {}
 
-#ifdef EXCHCXX_ENABLE_LIBXC
-  XCKernel::XCKernel(
-      const libxc_name_string &xc_name,
-      const Spin polar) : XCKernel(libxc_kernel_factory(xc_name.get(), polar)) {}
-#endif
+XCKernel::XCKernel(
+  const libxc_name_string& xc_name,
+  const Spin polar) :
+XCKernel( libxc_kernel_factory( xc_name.get(), polar ) ) { }
 
   XCKernel::XCKernel(impl_ptr &&ptr) : pimpl_(std::move(ptr)) {}
 

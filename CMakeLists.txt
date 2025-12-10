@@ -9,7 +9,6 @@ option( EXCHCXX_ENABLE_BENCHMARK "Enable Performance Benchmark" OFF )
 option( EXCHCXX_ENABLE_CUDA      "Enable Device Code (CUDA)"    OFF )
 option( EXCHCXX_ENABLE_HIP       "Enable Device Code (HIP)"     OFF )
 option( EXCHCXX_ENABLE_SYCL      "Enable Device Code (SYCL)"    OFF )
-option( EXCHCXX_ENABLE_LIBXC     "Enable Libxc Backend"         ON  )
 option( BUILD_SHARED_LIBS        "Build Shared Libs"            OFF )
 
 # Decided if we're compiling device bindings
@@ -59,7 +58,6 @@ if( EXCHCXX_ENABLE_HIP )
 endif()
 
 
-if(EXCHCXX_ENABLE_LIBXC)
 
 ## Find LibXC
 find_package( Libxc 7.0.0 CONFIG QUIET )
@@ -107,10 +105,6 @@ else()
   set( BUILD_TESTING ${OLD_BUILD_TESTING} CACHE BOOL "" FORCE )
 
 endif()
-
-else( EXCHCXX_ENABLE_LIBXC )
-  set( Libxc_FOUND FALSE )
-endif( EXCHCXX_ENABLE_LIBXC )
         
 add_subdirectory( src )
 
@@ -120,13 +114,13 @@ if( NOT DEFINED EXCHCXX_ENABLE_TESTS )
 endif()
 
 if( CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND EXCHCXX_ENABLE_TESTS AND BUILD_TESTING )
-  if(${Libxc_FOUND} OR NOT EXCHCXX_ENABLE_LIBXC)
+  if(${Libxc_FOUND})
     message(WARNING "ExchCXX Unit Tests Require Local Patch of Libxc - Disabling")
   else()
     add_subdirectory( test )
   endif()
 endif()
 
-if( EXCHCXX_ENABLE_BENCHMARK AND EXCHCXX_ENABLE_LIBXC )
+if( EXCHCXX_ENABLE_BENCHMARK )
   add_subdirectory( performance )
 endif()

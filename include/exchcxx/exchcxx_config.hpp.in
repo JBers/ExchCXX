@@ -49,7 +49,6 @@
 #cmakedefine EXCHCXX_ENABLE_HIP
 #cmakedefine EXCHCXX_ENABLE_SYCL
 #cmakedefine EXCHCXX_ENABLE_DEVICE
-#cmakedefine EXCHCXX_ENABLE_LIBXC
 
 
 #ifdef EXCHCXX_ENABLE_CUDA
