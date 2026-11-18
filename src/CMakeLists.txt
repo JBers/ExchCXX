@@ -84,7 +84,7 @@ if( EXCHCXX_CXX_HAS_WNON_VIRTUAL_DTOR )
 endif()
 
 if( EXCHCXX_CXX_HAS_WSHADOW )
-  target_compile_options( exchcxx PRIVATE $<$<COMPILE_LANGUAGE:CXX>: -Wshadow -Werror=shadow> )
+  target_compile_options( exchcxx PRIVATE $<$<COMPILE_LANGUAGE:CXX>: -Wshadow> )
 endif()
 
 
